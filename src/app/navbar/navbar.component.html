@@ -1,6 +1,10 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-dark navbar-expand-lg bg-success">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <!--Image of navbar and change color of logo to white-->
+        <a class="navbar-brand" href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Emblema_de_la_Junta_de_Andaluc%C3%ADa_2020.svg/1200px-Emblema_de_la_Junta_de_Andaluc%C3%ADa_2020.svg.png" alt="logo" width="30" class="d-inline-block align-text-top" style="filter:saturate(0) brightness(0) invert(1);">
+            <span class="negative-margin">ndalucia Descubre</span>
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,28 +15,30 @@
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Descubre</a>
                 </li>
-                <li class="nav-item dropdown" (click)="dropdownOpen = true" (dblclick)="dropdownOpen = false">
-                    <a class="nav-link dropdown-toggle" href="#" role="button">
-                      Dropdown
-                    </a>
-                    <ul class="dropdown-menu" *ngIf="dropdownOpen" [@fadeInOut]>
-                      <li><a class="dropdown-item" href="#">Action</a></li>
-                      <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li>
-                        <hr class="dropdown-divider">
-                      </li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li>
-                    </ul>
-                  </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <a class="nav-link" href="#">Lista</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button">
+                        Perfil
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#">Iniciar sesión</a></li>
+                        <li><a class="dropdown-item" href="#">Crear cuenta</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">¿Has olvidado tu contraseña?</a></li>
+                    </ul>
                 </li>
             </ul>
             <form class="d-flex" role="search">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-secondary" type="submit">Search</button>
             </form>
         </div>
     </div>

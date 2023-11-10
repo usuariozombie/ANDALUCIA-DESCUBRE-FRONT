@@ -5,11 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { CarouselComponent } from './carousel/carousel.component';
+import { VideoheaderComponent } from './videoheader/videoheader.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    CarouselComponent,
+    VideoheaderComponent
   ],
   imports: [
     BrowserModule,
