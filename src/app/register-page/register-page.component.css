@@ -1,0 +1,66 @@
+
+body {
+	background: #eee !important;	
+}
+
+.wrapper {
+	position: fixed; /* Use fixed positioning to keep the form in view */
+	top: 50%;        /* Center vertically */
+	left: 50%;       /* Center horizontally */
+	transform: translate(-50%, -50%); /* Adjust the centering */
+	z-index: 9999;   /* High z-index to ensure it's on top */
+	margin: 0;       /* Reset margins */
+	padding: 15px 35px 15px; /* Add some padding */
+	background-color:#ffffff; /* Semi-transparent background */
+	border-radius: 4%; /* Rounded corners */
+}
+
+.form-signin-heading {
+	color: #087021;
+}
+
+.form-signin {
+  max-width: 380px;
+  padding: 35px 35px 35px;
+  margin: 0 auto;
+  background-color: #ffffff;
+
+  .form-signin-heading,
+	.checkbox {
+	  margin-bottom: 30px;
+	}
+
+	.checkbox {
+	  font-weight: normal;
+	}
+
+	button {
+	  font-size: 16px;
+	  margin: 0 0 0 2vh;
+	  background-color: #087021;
+
+	}
+
+	.form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+
+	input[type="text"] {
+	  margin-bottom: -1px;
+	  border-bottom-left-radius: 0;
+	  border-bottom-right-radius: 0;
+	}
+
+	input[type="password"] {
+	  margin-bottom: 20px;
+	  border-top-left-radius: 0;
+	  border-top-right-radius: 0;
+	}
+}
