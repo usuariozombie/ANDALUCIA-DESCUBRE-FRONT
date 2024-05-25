@@ -5,7 +5,21 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    height: 50vh;
+    height: 70vh;
+}
+
+.videoContainer video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1000;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 .overlay-bg {
@@ -22,7 +36,7 @@
     border-radius: 50px;
     /* Agrega bordes redondeados */
     font-size: 3em;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: "Roboto Condensed", sans-serif;
     font-weight: 700;
     height: 100%;
     display: flex;

@@ -4,11 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarouselComponent } from './carousel/carousel.component';
 import { VideoheaderComponent } from './videoheader/videoheader.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomeComponent } from './home/home.component';
+import { DiscoverComponent } from './discover/discover.component';
+import { TownListComponent } from './features/town/town-list/town-list.component';
+import { TownCardComponent } from './features/town/town-card/town-card.component';
+import { LoadingComponent } from './features/loading/loading.component';
+import { TownComponent } from './town/town.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +23,11 @@ import { HomeComponent } from './home/home.component';
     VideoheaderComponent,
     LoginPageComponent,
     HomeComponent,
+    TownComponent,
+    DiscoverComponent,
+    TownListComponent,
+    TownCardComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

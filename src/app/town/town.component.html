@@ -1,0 +1,17 @@
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+<main class="ad-home">
+    <div class="container">
+        <div *ngIf="!town">
+            <app-loading></app-loading>
+        </div>
+        <div *ngIf="town">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>{{ town.townName }}</h1>
+                    <p>{{ town.townDescription }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

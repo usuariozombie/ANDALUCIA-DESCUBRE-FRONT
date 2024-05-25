@@ -1,0 +1,84 @@
+@import "src/_variables.scss";
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+a.card {
+    height: 500px;
+    width: 350px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: 250ms ease-in-out;
+
+    text-decoration: none;
+
+    img {
+        height: 100%;
+    }
+
+    .card_content {
+        width: 100%;
+        position: absolute;
+        bottom: -15px;
+        left: 0;
+        padding: 20px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.25) 25%);
+        transform: translateY(calc(100% - 108px));
+        transition: 250ms ease-in-out;
+
+        h3 {
+            font-size: 32px;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        h4 {
+            font-size: 20px;
+            font-style: italic;
+            font-weight: 400;
+            color: white;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 300;
+            color: white;
+            margin: 1rem 0;
+        }
+
+        .content_head {
+            position: relative;
+
+            &::after {
+                content: "";
+                height: 4px;
+                width: 50%;
+                background: $secondary;
+                position: absolute;
+                bottom: -15px;
+            }
+        }
+    }
+
+    &:hover {
+        transform: scale(1.1);
+
+        .card_content {
+            transform: translateY(0);
+        }
+    }
+}
