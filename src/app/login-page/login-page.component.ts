@@ -18,7 +18,6 @@ export class LoginPageComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       rememberMe: [false],
-      captcha: ['', Validators.required]
     });
   }
 
