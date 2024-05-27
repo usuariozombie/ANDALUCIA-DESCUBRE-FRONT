@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +15,9 @@ import { TownListComponent } from './features/town/town-list/town-list.component
 import { TownCardComponent } from './features/town/town-card/town-card.component';
 import { LoadingComponent } from './features/loading/loading.component';
 import { TownComponent } from './town/town.component';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,12 +31,22 @@ import { TownComponent } from './town/town.component';
     DiscoverComponent,
     TownListComponent,
     TownCardComponent,
-    LoadingComponent
+    LoadingComponent,
+    RegisterPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'csrf_token',
+      headerName: 'X-CSRF-Token',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

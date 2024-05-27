@@ -4,7 +4,7 @@
         [alt]="town.townName" class="town-card__image" />
     <div class="town-card__content">
         <h2 class="town-card__title">{{ town.townName }}</h2>
-        <p class="town-card__description">{{ town.townDescription }}</p>
+        <p class="town-card__description">{{ town.townDescription | slice:0:180 }}...</p>
 
         <div class="town-card__actions">
             <a [routerLink]="['/town', town.townId]" class="town-card__button">
