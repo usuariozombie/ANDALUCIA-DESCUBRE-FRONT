@@ -23,16 +23,17 @@ export class LoginPageComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
-      this.authService.login(this.loginForm.value).subscribe(
-        (response: any) => {
+      this.authService.login(this.loginForm.value).subscribe({
+        next: (response: any) => {
           console.log('Inicio de sesión exitoso', response);
-          this.router.navigate(['/']); // Ajusta la ruta según la configuración de tu enrutador
+          this.authService.saveToken(response.access_token);
+          this.router.navigate(['/admin/dashboard']); // Ajusta la ruta según la configuración de tu enrutador
         },
-        (error: any) => {
+        error: (error: any) => {
           console.log('Error en el inicio de sesión', error);
           this.loginError = true;
         }
-      );
+      });
     } else {
       console.log('Formulario inválido');
     }

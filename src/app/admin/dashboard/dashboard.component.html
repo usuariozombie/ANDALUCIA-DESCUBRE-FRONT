@@ -1,0 +1,41 @@
+<div class="card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">Usuarios verificados</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Pueblo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Bucle por usuarios -->
+                <tr *ngFor="let user of users">
+                    <td>
+                        <img alt="..." src="{{user.avatar}}" class="avatar avatar-sm rounded-circle me-2">
+                        <!-- <a class="text-heading font-semibold" routerLink="/admin/user/{{user.userID}}">{{user.userName}}</a> -->
+                        <a class="text-heading font-semibold" routerLink="/admin/user/{{user.userID}}">Test test test</a>
+                    </td>
+                    <td>{{user.email}}</td>
+                    <td>{{getDate(user.dates.requested)}}</td>
+                    <td>
+                        <a class="text-heading font-semibold" href="#">{{user.townID}}</a>
+                    </td>
+                    <td class="text-end">
+                        <a href="#" class="btn btn-sm btn-neutral">Ver</a>
+                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer border-0 py-5">
+        <span class="text-muted text-sm">Showing {{users.length}} items out of {{users.length}} results found</span>
+    </div>
+</div>

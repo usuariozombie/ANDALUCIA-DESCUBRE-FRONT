@@ -18,6 +18,9 @@ import { TownComponent } from './town/town.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AuthService } from './auth.service';
+import { AppAdminComponent } from './admin/app-admin/app-admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     TownCardComponent,
     LoadingComponent,
     RegisterPageComponent,
+    AppAdminComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +53,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
       headerName: 'X-CSRF-Token',
     }),
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
