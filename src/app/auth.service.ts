@@ -37,7 +37,19 @@ export class AuthService {
         return token !== null;
     }
 
-    // Función para cerrar sesión
+    getUserRole(): string | null {
+        const token = this.getToken();
+        if (token) {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            return payload.role;
+        }
+        return null;
+    }
+
+    isAdmin(): boolean {
+        return this.getUserRole() === 'admin';
+    }
+
     logout(): void {
         this.deleteToken();
     }

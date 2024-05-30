@@ -49,6 +49,10 @@
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                       <button type="submit" class="btn btn-primary btn-lg btn-rounded">Registrarse</button>
                     </div>
+                    <div class="tt-form-group">
+                      <label>Captcha <span class="required">*</span></label>
+                      <re-captcha (resolved)="resolved($event)" siteKey="6LfzFN0pAAAAAEulcAQhwCnZbYds8P9dnkKmBCB5"></re-captcha>
+                    </div>
                   </form>
                 </div>
                 <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
