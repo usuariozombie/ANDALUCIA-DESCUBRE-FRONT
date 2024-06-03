@@ -1,0 +1,34 @@
+<div class="card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">Pueblos</h5>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripción</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Bucle por usuarios -->
+                <tr *ngFor="let town of towns">
+                    <td>
+                        <img alt="Town image" src="{{town.townImage}}" class="avatar avatar-sm rounded-circle me-2">
+                        <a class="text-heading font-semibold"
+                            routerLink="/admin/town/{{town.townId}}">{{town.townName}}</a>
+                    </td>
+                    <td>{{town.townDescription | slice:0:100}}...</td>
+                    <td class="text-end">
+                        <a routerLink="/town/{{town.townId}}" target="_blank"
+                            class="btn btn-sm btn-neutral mx-1">Ver</a>
+                        <a routerLink="/admin/town/{{town.townId}}" class="btn btn-sm btn-neutral mx-1">Editar</a>
+                    </td>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer border-0 py-5">
+        <span class="text-muted text-sm">Showing {{towns.length}} items out of {{towns.length}} results found</span>
+    </div>
+</div>

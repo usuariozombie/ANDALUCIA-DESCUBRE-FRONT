@@ -1,13 +1,16 @@
 <nav class="navbar navbar-expand-lg ad-navbar">
     <div class="container-fluid">
-        <div class="d-flex align-items-center justify-content-between w-100">
-            <!--Image of navbar and change color of logo to white-->
-            <a class="navbar-brand" href="#">
-                <img src="/assets/img/emblema_junta_andalucia.png" alt="logo" width="40"
-                    class="d-inline-block align-text-top">
-                <span class="negative-margin">ndalucia Descubre</span>
-            </a>
-            <ul class="navbar-nav">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/img/emblema_junta_andalucia.png" alt="logo" width="40"
+                class="d-inline-block align-text-top">
+            <span class="negative-margin">ndalucia Descubre</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
@@ -18,9 +21,8 @@
                     <a class="nav-link" href="#">Nosotros</a>
                 </li>
             </ul>
-            <div class="ad-navbar_action_bar">
+            <div class="ad-navbar_action_bar ms-auto">
                 <a *ngIf="isLogged" class="btn btn-primary" href="/admin/dashboard">Dashboard</a>
-
                 <a *ngIf="!isLogged" class="btn" href="/login">Iniciar sesión</a>
                 <a *ngIf="!isLogged" class="btn btn-primary" href="/register">Crear cuenta</a>
             </div>

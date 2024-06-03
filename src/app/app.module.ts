@@ -21,39 +21,47 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { AppAdminComponent } from './admin/app-admin/app-admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { TownsComponent } from './admin/towns/towns.component';
+import { TownEditComponent } from './admin/town-edit/town-edit.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    CarouselComponent,
-    VideoheaderComponent,
-    LoginPageComponent,
-    HomeComponent,
-    TownComponent,
-    DiscoverComponent,
-    TownListComponent,
-    TownCardComponent,
-    LoadingComponent,
-    RegisterPageComponent,
-    AppAdminComponent,
-    DashboardComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    RecaptchaModule,
-    RecaptchaFormsModule,
-    ReactiveFormsModule,
-    FormsModule,
-    HttpClientModule,
-    HttpClientXsrfModule.withOptions({
-      cookieName: 'csrf_token',
-      headerName: 'X-CSRF-Token',
-    }),
-  ],
-  providers: [AuthService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        CarouselComponent,
+        VideoheaderComponent,
+        LoginPageComponent,
+        HomeComponent,
+        TownComponent,
+        DiscoverComponent,
+        TownListComponent,
+        TownCardComponent,
+        LoadingComponent,
+        RegisterPageComponent,
+        AppAdminComponent,
+        DashboardComponent,
+        TownsComponent,
+        TownEditComponent,
+        ConfirmationDialogComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        RecaptchaModule,
+        RecaptchaFormsModule,
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientModule,
+        HttpClientXsrfModule.withOptions({
+            cookieName: 'csrf_token',
+            headerName: 'X-CSRF-Token',
+        }),
+        NgbModule,
+    ],
+    providers: [AuthService],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

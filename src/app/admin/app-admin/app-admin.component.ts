@@ -3,20 +3,26 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/user.service';
 
 @Component({
-  selector: 'app-app-admin',
-  templateUrl: './app-admin.component.html',
-  styleUrl: './app-admin.component.scss'
+    selector: 'app-app-admin',
+    templateUrl: './app-admin.component.html',
+    styleUrl: './app-admin.component.scss'
 })
 export class AppAdminComponent {
 
-  public user: any;
+    public user: any;
+    public menuItems: any[];
 
-  constructor(private userService: UserService, private router: Router) {
-    this.user = userService.getUser();
-  }
+    constructor(private userService: UserService, private router: Router) {
+        this.user = userService.getUser();
 
-  logout(): void {
-    this.userService.logout();
-    this.router.navigate(['/login']);
-  }
+        this.menuItems = [
+            { route: '/admin/dashboard', title: 'Dashboard', icon: 'house', show: this.user.role === 'admin' },
+            { route: '/admin/towns', title: 'Towns', icon: 'map', show: true },
+        ];
+    }
+
+    logout(): void {
+        this.userService.logout();
+        this.router.navigate(['/login']);
+    }
 }

@@ -12,16 +12,22 @@ export class UserService {
         return fetch('https://andaluciadescubre.usuariozombie.com/auth/users').then(response => response.json());
     }
 
-    getUser(): any {
-        return {
-            name: 'Usuario Zombie',
-            email: 'usu@zombrex.com',
-            age: 22,
-            role: 'admin'
-        };
+    public getUser(): any {
+        return this.authService.getUser();
     }
 
-    logout(): void {
+    public updateUser(user: any): Promise<Response> {
+        return fetch('https://andaluciadescubre.usuariozombie.com/auth/user/' + user.userID, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + this.authService.getToken()
+            },
+            body: JSON.stringify(user)
+        });
+    }
+
+    public logout(): void {
         this.authService.logout();
     }
 }

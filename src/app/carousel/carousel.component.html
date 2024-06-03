@@ -1,7 +1,6 @@
 <div class="wrapper">
     <a *ngFor="let town of towns" class="card">
-        <img src="https://s1.abcstatics.com/abc/www/multimedia/queplan/2023/06/29/sevilla-general-RoY4KIujJ8KV3D4eNmmIupJ-1200x840@abc.jpg"
-            alt="">
+        <img src="{{town.townImage}}" class="card_image" alt="">
         <!-- <img [src]="town.townImage" class="card_image" [alt]="town.townName"> -->
         <div class="card_content">
             <div class="content_head">
@@ -11,5 +10,5 @@
                 <p>{{town.townDescription}}</p>
             </div>
         </div>
-    </a>        
+    </a>
 </div>

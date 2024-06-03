@@ -1,15 +1,16 @@
 <div class="card shadow border-0 mb-7">
     <div class="card-header">
-        <h5 class="mb-0">Usuarios verificados</h5>
+        <h5 class="mb-0">Usuarios</h5>
     </div>
     <div class="table-responsive">
         <table class="table table-hover table-nowrap">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Nombre</th>
                     <th scope="col">E-mail</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Pueblo</th>
+                    <th scope="col">Verificado</th>
+                    <th scope="col" class="text-end">Acciones</th>
                     <th></th>
                 </tr>
             </thead>
@@ -17,21 +18,34 @@
                 <!-- Bucle por usuarios -->
                 <tr *ngFor="let user of users">
                     <td>
-                        <img alt="..." src="{{user.avatar}}" class="avatar avatar-sm rounded-circle me-2">
-                        <!-- <a class="text-heading font-semibold" routerLink="/admin/user/{{user.userID}}">{{user.userName}}</a> -->
-                        <a class="text-heading font-semibold" routerLink="/admin/user/{{user.userID}}">Test test test</a>
+                        <a class="text-heading font-semibold"
+                            routerLink="/admin/user/{{user.userID}}">{{user.email}}</a>
                     </td>
-                    <td>{{user.email}}</td>
                     <td>{{getDate(user.dates.requested)}}</td>
+                    <td *ngIf="user.townID">
+                        <img alt="Town image" src="{{user.townImage}}" class="avatar avatar-sm rounded-circle me-2">
+                        <a class="text-heading font-semibold"
+                            routerLink="/admin/town/{{user.townID}}">{{user.townName}}</a>
+                    </td>
+                    <td *ngIf="!user.townID">
+                        <span class="text-muted">No asignado</span>
+                    </td>
                     <td>
-                        <a class="text-heading font-semibold" href="#">{{user.townID}}</a>
+                        <span *ngIf="user.verified" class="badge rounded-pill text-bg-success">Verificado</span>
+                        <span *ngIf="!user.verified" class="badge rounded-pill text-bg-danger">No verificado</span>
                     </td>
                     <td class="text-end">
-                        <a href="#" class="btn btn-sm btn-neutral">Ver</a>
-                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                        <a href="#" class="btn btn-sm btn-neutral mx-1">Ver</a>
+                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover mx-1">
                             <i class="bi bi-trash"></i>
                         </button>
+                        <button *ngIf="!user.verified" type="button"
+                            class="btn btn-sm btn-square btn-neutral text-success-hover mx-1"
+                            (click)="openConfirmationModal(user)">
+                            <i class="bi bi-check"></i>
+                        </button>
                     </td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -39,3 +53,5 @@
         <span class="text-muted text-sm">Showing {{users.length}} items out of {{users.length}} results found</span>
     </div>
 </div>
+
+<!-- <app-confirmation-dialog *ngIf="userToVerify" (confirmed)="verifyUser()"></app-confirmation-dialog> -->

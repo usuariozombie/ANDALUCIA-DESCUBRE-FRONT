@@ -8,6 +8,10 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { AppAdminComponent } from './admin/app-admin/app-admin.component';
 import { authGuard } from './admin/auth.guard';
+import { adminGuard } from './admin/admin.guard';
+import { TownsComponent } from './admin/towns/towns.component';
+import { TownEditComponent } from './admin/town-edit/town-edit.component';
+import { townGuard } from './admin/town.guard';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -27,7 +31,19 @@ const routes: Routes = [
             },
             {
                 path: 'dashboard',
-                component: DashboardComponent
+                component: DashboardComponent,
+                canActivate: [adminGuard],
+                data: { title: 'Dashboarda' }
+            },
+            {
+                path: 'towns',
+                component: TownsComponent,
+                canActivate: [authGuard]
+            },
+            {
+                path: 'town/:id',
+                component: TownEditComponent,
+                canActivate: [authGuard, townGuard]
             }
         ],
     }

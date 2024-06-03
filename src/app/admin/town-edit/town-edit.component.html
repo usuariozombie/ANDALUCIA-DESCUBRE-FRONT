@@ -1,0 +1,166 @@
+<div class="card shadow border-0 mb-7">
+    <div class="card-header">
+        <h5 class="mb-0">Editar Pueblo</h5>
+    </div>
+    <div class="card-body">
+        <!-- Agregar alertas de Bootstrap para mensajes -->
+        <div *ngIf="successMessage" class="alert alert-success" role="alert">
+            {{ successMessage }}
+        </div>
+        <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+            {{ errorMessage }}
+        </div>
+        <ul class="nav nav-tabs mb-5" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link py-2 active" id="details-tab" data-bs-toggle="tab" data-bs-target="#details"
+                    type="button" role="tab" aria-controls="details" aria-selected="true">Detalles</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link py-2" id="dishes-tab" data-bs-toggle="tab" data-bs-target="#dishes"
+                    type="button" role="tab" aria-controls="dishes" aria-selected="false">Platos Típicos</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link py-2" id="events-tab" data-bs-toggle="tab" data-bs-target="#events"
+                    type="button" role="tab" aria-controls="events" aria-selected="false">Eventos Culturales</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link py-2" id="monuments-tab" data-bs-toggle="tab" data-bs-target="#monuments"
+                    type="button" role="tab" aria-controls="monuments" aria-selected="false">Monumentos</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
+                <form [formGroup]="editTownForm" (ngSubmit)="onSubmit()">
+                    <div class="mb-3">
+                        <label for="townName" class="form-label">Nombre del Pueblo</label>
+                        <input id="townName" type="text" formControlName="townName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="townDescription" class="form-label">Descripción</label>
+                        <textarea id="townDescription" formControlName="townDescription" class="form-control"
+                            rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="townImage" class="form-label">Imagen del Pueblo</label>
+                        <input id="townImage" type="text" formControlName="townImage" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="townMap" class="form-label">URL del Mapa</label>
+                        <input id="townMap" type="text" formControlName="townMap" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="townVisibility" class="form-label">Visibilidad del Pueblo</label>
+                        <select id="townVisibility" formControlName="townVisibility" class="form-control">
+                            <option [ngValue]="0" [selected]="editTownForm.value.townVisibility === '0'">Oculto</option>
+                            <option [ngValue]="1" [selected]="editTownForm.value.townVisibility === '1'">Visible
+                            </option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="dishes" role="tabpanel" aria-labelledby="dishes-tab">
+                <ng-template #toastContainer></ng-template>
+                <div class="mb-4">
+                    <h5>Platos Típicos</h5>
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let dish of dishes">
+                            <div class="card mb-3">
+                                <img src="{{dish.dishImage}}" class="card-img-top" alt="{{dish.dishName}}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{dish.dishName}}</h5>
+                                    <p class="card-text">{{dish.dishDescription}}</p>
+                                    <button (click)="onDeleteDish(dish.dishId)" class="btn btn-danger">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form [formGroup]="addDishForm" (ngSubmit)="onAddDish()">
+                    <div class="mb-3">
+                        <label for="dishName" class="form-label">Nombre del Plato</label>
+                        <input id="dishName" type="text" formControlName="dishName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="dishDescription" class="form-label">Descripción</label>
+                        <textarea id="dishDescription" formControlName="dishDescription" class="form-control"
+                            rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dishImage" class="form-label">Imagen del Plato</label>
+                        <input id="dishImage" type="text" formControlName="dishImage" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Añadir Plato</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+                <div class="mb-4">
+                    <h5>Eventos Culturales</h5>
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let event of events">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{event.eventName}}</h5>
+                                    <p class="card-text">{{event.eventDescription}}</p>
+                                    <button (click)="onDeleteEvent(event.eventId)"
+                                        class="btn btn-danger">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form [formGroup]="addEventForm" (ngSubmit)="onAddEvent()">
+                    <div class="mb-3">
+                        <label for="eventName" class="form-label">Nombre del Evento</label>
+                        <input id="eventName" type="text" formControlName="eventName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventDate" class="form-label">Fecha del Evento</label>
+                        <input id="eventDate" type="date" formControlName="eventDate" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="eventDescription" class="form-label">Descripción</label>
+                        <textarea id="eventDescription" formControlName="eventDescription" class="form-control"
+                            rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Añadir Evento</button>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="monuments" role="tabpanel" aria-labelledby="monuments-tab">
+                <div class="mb-4">
+                    <h5>Monumentos</h5>
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let monument of monuments">
+                            <div class="card mb-3">
+                                <img src="{{monument.monumentImage}}" class="card-img-top"
+                                    alt="{{monument.monumentName}}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{monument.monumentName}}</h5>
+                                    <p class="card-text">{{monument.monumentDescription}}</p>
+                                    <button (click)="onDeleteMonument(monument.monumentId)"
+                                        class="btn btn-danger">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form [formGroup]="addMonumentForm" (ngSubmit)="onAddMonument()">
+                    <div class="mb-3">
+                        <label for="monumentName" class="form-label">Nombre del Monumento</label>
+                        <input id="monumentName" type="text" formControlName="monumentName" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="monumentDescription" class="form-label">Descripción</label>
+                        <textarea id="monumentDescription" formControlName="monumentDescription" class="form-control"
+                            rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="monumentImage" class="form-label">Imagen del Monumento</label>
+                        <input id="monumentImage" type="text" formControlName="monumentImage" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Añadir Monumento</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

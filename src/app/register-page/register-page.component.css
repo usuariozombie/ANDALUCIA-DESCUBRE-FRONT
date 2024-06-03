@@ -1,20 +1,22 @@
-
 body {
-	background: #eee !important;	
-}
-
-.wrapper {
-	position: fixed; /* Use fixed positioning to keep the form in view */
-	top: 50%;        /* Center vertically */
-	left: 50%;       /* Center horizontally */
-	transform: translate(-50%, -50%); /* Adjust the centering */
-	z-index: 9999;   /* High z-index to ensure it's on top */
-	margin: 0;       /* Reset margins */
-	padding: 15px 35px 15px; /* Add some padding */
-	background-color:#ffffff; /* Semi-transparent background */
-	border-radius: 4%; /* Rounded corners */
+	background: #eee !important;
+	margin: 0;
+	/* Reset body margin */
+	padding: 0;
+	/* Reset body padding */
+	height: 100vh;
+	/* Full viewport height */
+	display: flex;
+	justify-content: center;
+	/* Center horizontally */
+	align-items: center;
+	/* Center vertically */
 }
 
 .btn-rounded {
 	border-radius: 50px;
+}
+
+.card {
+	border-radius: 25px;
 }

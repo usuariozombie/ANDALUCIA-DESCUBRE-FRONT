@@ -1,17 +1,107 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
-<main class="ad-home">
-    <div class="container">
-        <div *ngIf="!town">
+<main class="ad-town">
+    <div class="container mt-4">
+        <div *ngIf="!town" class="d-flex justify-content-center align-items-center" style="height: 80vh;">
             <app-loading></app-loading>
         </div>
         <div *ngIf="town">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>{{ town.townName }}</h1>
-                    <p>{{ town.townDescription }}</p>
+            <div class="row mb-4">
+                <div class="col-md-12 text-center">
+                    <h1 class="display-4">{{ town.townName }}</h1>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ town.townImage }}" class="img-fluid rounded shadow" alt="{{ town.townName }}">
+                </div>
+                <div class="col-md-6">
+                    <p class="lead">{{ town.townDescription.split('\n')[0] }}</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <p *ngIf="town.townDescription.split('\n').length > 1">
+                        {{ town.townDescription.split('\n').slice(1).join('\n') }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <ul class="nav nav-tabs mt-4" id="townTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="monuments-tab" data-bs-toggle="tab" data-bs-target="#monuments"
+                        type="button" role="tab" aria-controls="monuments" aria-selected="true">Monumentos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="dishes-tab" data-bs-toggle="tab" data-bs-target="#dishes" type="button"
+                        role="tab" aria-controls="dishes" aria-selected="false">Platos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="events-tab" data-bs-toggle="tab" data-bs-target="#events" type="button"
+                        role="tab" aria-controls="events" aria-selected="false">Eventos</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="townTabsContent">
+                <div class="tab-pane fade show active" id="monuments" role="tabpanel" aria-labelledby="monuments-tab">
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4" *ngFor="let monument of monuments">
+                                    <div class="card mb-4 shadow-sm">
+                                        <img class="card-img-top" [src]="monument.monumentImage"
+                                            alt="{{ monument.monumentName }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ monument.monumentName }}</h5>
+                                            <p class="card-text">{{ monument.monumentDescription }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="dishes" role="tabpanel" aria-labelledby="dishes-tab">
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4" *ngFor="let dish of dishes">
+                                    <div class="card mb-4 shadow-sm">
+                                        <img class="card-img-top" [src]="dish.dishImage" alt="{{ dish.dishName }}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ dish.dishName }}</h5>
+                                            <p class="card-text">{{ dish.dishDescription }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4" *ngFor="let event of events">
+                                    <div class="card mb-4 shadow-sm">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ event.eventName }}</h5>
+                                            <p class="card-text">{{ event.eventDescription }}</p>
+                                            <p class="card-text"><small class="text-muted">{{ event.eventDate | date
+                                                    }}</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <iframe width=100% height="500" [src]="townMapUrl" style="border: 1px solid black"></iframe><br /><small><a
+                    [href]="townMapUrl">Ver el mapa
+                    más grande</a></small>
+
         </div>
     </div>
 </main>

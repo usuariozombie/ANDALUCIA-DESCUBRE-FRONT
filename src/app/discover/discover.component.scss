@@ -2,3 +2,14 @@
     margin-top: 80px;
     margin-bottom: 80px;
 }
+
+.search-input {
+    flex: 1;
+}
+
+.custom-select {
+    margin-left: 5%; // Asegúrate de que haya suficiente espacio a la derecha del input
+    width: auto; // Ajusta el tamaño del select
+    font-size: 1.15rem; // Coincide con el form-control-lg
+    line-height: 1.5;
+}
