@@ -37,7 +37,7 @@ export class TownEditComponent implements OnInit {
             townDescription: ['', Validators.required],
             townImage: [''],
             townMap: [''],
-            townVisibility: ['1', Validators.required] // Añadido townVisibility
+            townVisibility: ['1', Validators.required]
         });
         this.addDishForm = this.fb.group({
             dishName: ['', Validators.required],

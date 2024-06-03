@@ -51,8 +51,9 @@
                     <div class="mb-3">
                         <label for="townVisibility" class="form-label">Visibilidad del Pueblo</label>
                         <select id="townVisibility" formControlName="townVisibility" class="form-control">
-                            <option [ngValue]="0" [selected]="editTownForm.value.townVisibility === '0'">Oculto</option>
-                            <option [ngValue]="1" [selected]="editTownForm.value.townVisibility === '1'">Visible
+                            <option [ngValue]="0" [selected]="editTownForm.value.townVisibility === false">Oculto
+                            </option>
+                            <option [ngValue]="1" [selected]="editTownForm.value.townVisibility === true">Visible
                             </option>
                         </select>
                     </div>

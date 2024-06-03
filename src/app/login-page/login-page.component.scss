@@ -1,20 +1,32 @@
-
 body {
-	background: #eee !important;	
+	background: #eee !important;
 }
 
 .wrapper {
-	position: fixed; /* Use fixed positioning to keep the form in view */
-	top: 50%;        /* Center vertically */
-	left: 50%;       /* Center horizontally */
-	transform: translate(-50%, -50%); /* Adjust the centering */
-	z-index: 9999;   /* High z-index to ensure it's on top */
-	margin: 0;       /* Reset margins */
-	padding: 15px 35px 15px; /* Add some padding */
-	background-color:#ffffff; /* Semi-transparent background */
-	border-radius: 4%; /* Rounded corners */
+	position: fixed;
+	/* Use fixed positioning to keep the form in view */
+	top: 50%;
+	/* Center vertically */
+	left: 50%;
+	/* Center horizontally */
+	transform: translate(-50%, -50%);
+	/* Adjust the centering */
+	z-index: 9999;
+	/* High z-index to ensure it's on top */
+	margin: 0;
+	/* Reset margins */
+	padding: 15px 35px 15px;
+	/* Add some padding */
+	background-color: #ffffff;
+	/* Semi-transparent background */
+	border-radius: 4%;
+	/* Rounded corners */
 }
 
 .btn-rounded {
 	border-radius: 50px;
+}
+
+.text-center {
+	color: #007932;
 }

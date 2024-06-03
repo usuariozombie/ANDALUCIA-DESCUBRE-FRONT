@@ -1,16 +1,22 @@
+html,
 body {
 	background: #eee !important;
 	margin: 0;
-	/* Reset body margin */
 	padding: 0;
-	/* Reset body padding */
-	height: 100vh;
-	/* Full viewport height */
+	height: 100%;
+}
+
+body {
 	display: flex;
+	flex-direction: column;
+	/* Agregamos esta línea */
 	justify-content: center;
-	/* Center horizontally */
 	align-items: center;
-	/* Center vertically */
+}
+
+.wrapper {
+	flex-grow: 1;
+	/* Agregamos esta línea */
 }
 
 .btn-rounded {
@@ -19,4 +25,14 @@ body {
 
 .card {
 	border-radius: 25px;
+}
+
+.text-danger {
+	display: block;
+	color: #dc3545;
+	font-size: 80%;
+}
+
+.text-center {
+	color: #007932;
 }
