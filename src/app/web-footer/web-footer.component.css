@@ -14,7 +14,10 @@
 }
 
 .footer-logo {
-    width: 400px;
+    max-width: 100%;
+    /* Cambiar width por max-width */
+    height: auto;
+    /* Ajustar automáticamente la altura */
     margin-top: 20px;
 }
 
