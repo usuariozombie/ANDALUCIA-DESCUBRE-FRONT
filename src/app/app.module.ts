@@ -27,6 +27,9 @@ import { TownEditComponent } from './admin/town-edit/town-edit.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { LogsComponent } from './logs/logs.component';
+import { WebFooterComponent } from './web-footer/web-footer.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +50,10 @@ import { LogsComponent } from './logs/logs.component';
         TownsComponent,
         TownEditComponent,
         ConfirmationDialogComponent,
-        LogsComponent
+        LogsComponent,
+        WebFooterComponent,
+        AboutUsComponent,
+        AboutComponent
     ],
     imports: [
         BrowserModule,

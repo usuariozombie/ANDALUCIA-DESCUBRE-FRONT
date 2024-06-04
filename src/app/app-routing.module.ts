@@ -13,12 +13,14 @@ import { TownsComponent } from './admin/towns/towns.component';
 import { TownEditComponent } from './admin/town-edit/town-edit.component';
 import { townGuard } from './admin/town.guard';
 import { LogsComponent } from './logs/logs.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginPageComponent },
     { path: 'register', component: RegisterPageComponent },
     { path: 'discover', component: DiscoverComponent },
+    { path: 'about-us', component: AboutComponent },
     { path: 'town/:id', component: TownComponent },
     {
         path: 'admin',

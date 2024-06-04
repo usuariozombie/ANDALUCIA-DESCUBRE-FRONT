@@ -12,19 +12,20 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link" routerLink="/" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/discover">Descubre</a>
+                    <a class="nav-link" routerLink="/discover" routerLinkActive="active">Descubre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Nosotros</a>
+                    <a class="nav-link" routerLink="/about-us" routerLinkActive="active">Nosotros</a>
                 </li>
             </ul>
             <div class="ad-navbar_action_bar ms-auto">
-                <a *ngIf="isLogged" class="btn btn-primary" href="/admin/dashboard">Dashboard</a>
-                <a *ngIf="!isLogged" class="btn" href="/login">Iniciar sesión</a>
-                <a *ngIf="!isLogged" class="btn btn-primary" href="/register">Crear cuenta</a>
+                <a *ngIf="isLogged" class="btn btn-primary" routerLink="/admin/dashboard">Dashboard</a>
+                <a *ngIf="!isLogged" class="btn" routerLink="/login">Iniciar sesión</a>
+                <a *ngIf="!isLogged" class="btn btn-primary" routerLink="/register">Crear cuenta</a>
             </div>
         </div>
     </div>

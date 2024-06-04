@@ -5,6 +5,13 @@
 
 <div class="card-body p-md-5">
     <div class="row justify-content-center">
+        <div class="d-flex justify-content-end mx-4 mb-3 mb-lg-4">
+            <a routerLink="/" class="btn btn-secondary btn-sm text-white">
+                Volver
+                <img src="https://cdn3.iconfinder.com/data/icons/basic-user-interface-5/64/Door_enter_entrance_exit_leave_logout_out_-512.png"
+                    class="img-fluid" alt="Icono de salida" width="24" style="filter: invert(1);">
+            </a>
+        </div>
         <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
             <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrarse</p>
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mx-1 mx-md-4">

@@ -1,7 +1,6 @@
 <article class="town-card">
     <!-- <img [src]="town.townImage" [alt]="town.townName" class="town-card__image" /> -->
-    <img src="https://s1.abcstatics.com/abc/www/multimedia/queplan/2023/06/29/sevilla-general-RoY4KIujJ8KV3D4eNmmIupJ-1200x840@abc.jpg"
-        [alt]="town.townName" class="town-card__image" />
+    <img src="{{ town.townImage }}" [alt]="town.townName" class="town-card__image" />
     <div class="town-card__content">
         <h2 class="town-card__title">{{ town.townName }}</h2>
         <p class="town-card__description">{{ town.townDescription | slice:0:180 }}...</p>
