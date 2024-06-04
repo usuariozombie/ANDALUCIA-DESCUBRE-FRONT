@@ -39,8 +39,30 @@ export class UserService {
     }
 
     public sendVerificationEmail(to_email: string): Promise<Response> {
-        const subject = 'Your account has been verified';
-        const body = '<strong>Your account has been successfully verified!</strong>';
+        const subject = 'Tu cuenta de Andalucía Descubre ha sido verificada';
+        const body = `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+            <div style="background-color: #00447c; padding: 20px; text-align: center;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Andalucia.svg/1280px-Andalucia.svg.png" alt="Andalucía Descubre" style="width: 500px;">
+            </div>
+            <div style="padding: 20px;">
+                <h1 style="color: #00447c;">¡Bienvenido a Andalucía Descubre!</h1>
+                <p>Nos complace informarte que tu cuenta ha sido <strong>verificada con éxito</strong>. Ahora puedes disfrutar de todos los beneficios y características de nuestro servicio.</p>
+                <p>Si tienes alguna pregunta o necesitas ayuda, no dudes en <a href="https://example.com/contact">contactarnos</a>.</p>
+            </div>
+            <div style="background-color: #f7f7f7; padding: 20px; text-align: center; color: #777;">
+                <p>Síguenos en nuestras redes sociales:</p>
+                <p>
+                    <a href="https://www.facebook.com/AndaluciaJunta/?locale=es_ES" style="margin: 0 10px;"><img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook" style="width: 30px;"></a>
+                    <a href="https://x.com/AndaluciaJunta" style="margin: 0 10px;"><img src="https://img.freepik.com/vector-premium/nuevo-vector-logotipo-twitter-x-vector-signo-twitter-x_952796-6.jpg" alt="Twitter" style="width: 30px;"></a>
+                    <a href="https://www.instagram.com/andaluciajunta/" style="margin: 0 10px;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Instagram-Icon.png/1200px-Instagram-Icon.png" alt="Instagram" style="width: 30px;"></a>
+                </p>
+                <img src="https://csirc.ugr.es/sites/centros/csirc/public/inline-images/Logo-junta-andalucia-europa-pie-pagina-1024x341-1_0.png" alt="Andalucía Descubre footer" style="width: 400px;">
+                <p>&copy; 2024 Andalucía Descubre. Todos los derechos reservados.</p>
+                <p><a href="https://example.com/unsubscribe" style="color: #777;">Darse de baja</a></p>
+            </div>
+        </div>
+        `;
 
         return fetch('https://andaluciadescubre.usuariozombie.com/auth/send-email', {
             method: 'POST',
