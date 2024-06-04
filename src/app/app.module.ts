@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { TownsComponent } from './admin/towns/towns.component';
 import { TownEditComponent } from './admin/town-edit/town-edit.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { LogsComponent } from './logs/logs.component';
 
 @NgModule({
     declarations: [
@@ -44,7 +46,8 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
         DashboardComponent,
         TownsComponent,
         TownEditComponent,
-        ConfirmationDialogComponent
+        ConfirmationDialogComponent,
+        LogsComponent
     ],
     imports: [
         BrowserModule,
@@ -60,6 +63,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
             headerName: 'X-CSRF-Token',
         }),
         NgbModule,
+        CommonModule
     ],
     providers: [AuthService],
     bootstrap: [AppComponent]

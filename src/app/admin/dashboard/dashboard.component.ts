@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
     public users: any[] = [];
     public errorMessage: string = '';
 
-    constructor(private userService: UserService, private modalService: NgbModal) { }
+    constructor(private userService: UserService, private modalService: NgbModal, private townService: TownService) { }
 
     ngOnInit() {
         this.loadUsers();
@@ -36,7 +36,6 @@ export class DashboardComponent implements OnInit {
 
     public openConfirmationModal(user: any): void {
         console.log("Abriendo modal de confirmación para el usuario:", user);
-        // Render modal ConfirmationDialogComponent
         const modal = this.modalService.open(ConfirmationDialogComponent, { centered: true, size: 'lg' });
         (modal.componentInstance as ConfirmationDialogComponent).message = '¿Estás seguro de que deseas verificar al usuario con el email ' + user.email + '?';
         modal.result.then((result) => {
@@ -46,23 +45,49 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    public verifyUser(user: any): void {
+    public async verifyUser(user: any): Promise<void> {
         if (user) {
             user.verified = true;
-            this.userService.updateUser(user)
-                .then((data) => {
-                    if (data.status !== 200) {
-                        console.error('Error verifying user', data);
-                        user.verified = false;
-                        this.errorMessage = 'Ocurrió un error al verificar el usuario. Por favor, inténtalo de nuevo más tarde.';
-                    } else {
-                        console.log('User verified');
-                    }
-                })
-                .catch(error => {
-                    this.errorMessage = 'Ocurrió un error al verificar el usuario. Por favor, inténtalo de nuevo más tarde.';
+            try {
+                const data = await this.userService.updateUser(user);
+                if (data.status !== 200) {
+                    console.error('Error verifying user', data);
                     user.verified = false;
-                });
+                    this.errorMessage = 'Ocurrió un error al verificar el usuario. Por favor, inténtalo de nuevo más tarde.';
+                } else {
+                    await this.userService.sendVerificationEmail(user.email);
+                    console.log('User verified and email sent');
+                }
+            } catch (error) {
+                this.errorMessage = 'Ocurrió un error al verificar el usuario. Por favor, inténtalo de nuevo más tarde.';
+                user.verified = false;
+            }
+        }
+    }
+
+    public openDeletionModal(user: any): void {
+        console.log("Abriendo modal de eliminación para el usuario:", user);
+        const modal = this.modalService.open(ConfirmationDialogComponent, { centered: true, size: 'lg' });
+        (modal.componentInstance as ConfirmationDialogComponent).message = '¿Estás seguro de que deseas eliminar al usuario con el email ' + user.email + '?';
+        modal.result.then((result) => {
+            if (result && result === 'Confirm') {
+                this.deleteUser(user);
+            }
+        });
+    }
+
+    public async deleteUser(user: any): Promise<void> {
+        if (user) {
+            try {
+                if (user.townID) {
+                    await this.townService.deleteTown(user.townID);
+                }
+                await this.userService.deleteUser(user.userID);
+                this.users = this.users.filter(u => u.userID !== user.userID);
+                console.log('User and associated town deleted');
+            } catch (error) {
+                this.errorMessage = 'Ocurrió un error al eliminar el usuario. Por favor, inténtalo de nuevo más tarde.';
+            }
         }
     }
 }

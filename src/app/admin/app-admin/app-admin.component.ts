@@ -18,6 +18,7 @@ export class AppAdminComponent {
         this.menuItems = [
             { route: '/admin/dashboard', title: 'Dashboard', icon: 'house', show: this.user.role === 'admin' },
             { route: '/admin/towns', title: 'Towns', icon: 'map', show: true },
+            { route: '/admin/logs', title: 'Logs', icon: 'book', show: this.user.role === 'admin' }
         ];
     }
 

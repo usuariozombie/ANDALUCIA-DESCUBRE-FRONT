@@ -36,7 +36,8 @@
                     </td>
                     <td class="text-end">
                         <a href="#" class="btn btn-sm btn-neutral mx-1">Ver</a>
-                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover mx-1">
+                        <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover mx-1"
+                            (click)="openDeletionModal(user)">
                             <i class="bi bi-trash"></i>
                         </button>
                         <button *ngIf="!user.verified" type="button"
@@ -53,5 +54,3 @@
         <span class="text-muted text-sm">Showing {{users.length}} items out of {{users.length}} results found</span>
     </div>
 </div>
-
-<!-- <app-confirmation-dialog *ngIf="userToVerify" (confirmed)="verifyUser()"></app-confirmation-dialog> -->

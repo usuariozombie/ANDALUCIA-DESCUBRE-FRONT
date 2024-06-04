@@ -41,4 +41,10 @@ export class TownService {
             body: JSON.stringify(town)
         }).then(response => response.json());
     }
+
+    async deleteTown(id: number) {
+        return fetch(`https://andaluciadescubre.usuariozombie.com/api/towns/${id}`, {
+            method: 'DELETE'
+        });
+    }
 }

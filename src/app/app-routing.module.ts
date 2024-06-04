@@ -12,6 +12,7 @@ import { adminGuard } from './admin/admin.guard';
 import { TownsComponent } from './admin/towns/towns.component';
 import { TownEditComponent } from './admin/town-edit/town-edit.component';
 import { townGuard } from './admin/town.guard';
+import { LogsComponent } from './logs/logs.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -44,6 +45,11 @@ const routes: Routes = [
                 path: 'town/:id',
                 component: TownEditComponent,
                 canActivate: [authGuard, townGuard]
+            },
+            {
+                path: 'logs',
+                component: LogsComponent,
+                canActivate: [adminGuard]
             }
         ],
     }
