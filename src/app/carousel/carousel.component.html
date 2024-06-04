@@ -7,7 +7,7 @@
                 <h3>{{town.townName}}</h3>
             </div>
             <div class="content_body">
-                <p>{{town.townDescription}}</p>
+                <p>{{ town.townDescription | slice:0:180 }}...</p>
             </div>
         </div>
     </a>
