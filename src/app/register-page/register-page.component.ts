@@ -59,6 +59,7 @@ export class RegisterPageComponent {
     }
 
     onSubmit() {
+        this.registerForm.markAllAsTouched();
         if (this.registerForm.valid) {
             const townData = {
                 townName: this.registerForm.value.townName,
@@ -93,7 +94,13 @@ export class RegisterPageComponent {
                 }
             );
         } else {
-            console.log('Formulario inválido');
+            const requiredFields = ['name', 'email', 'password', 'confirmPassword', 'terms', 'townName', 'townProvince'];
+            const missingFields = requiredFields.filter(field => !this.registerForm.get(field)?.value);
+
+            if (missingFields.length > 0) {
+                console.log('Por favor, complete todos los campos');
+                return;
+            }
         }
     }
 

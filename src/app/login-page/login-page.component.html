@@ -1,7 +1,8 @@
 <section class="vh-100" style="background-color: #fff;">
-    <div *ngIf="loginError" class="alert alert-danger mt-3" role="alert">
-        Error en el inicio de sesión. Verifique sus credenciales e inténtelo de nuevo.
+    <div *ngIf="loginError || loginErrorMessage" class="alert alert-danger mt-3" role="alert">
+        {{ loginErrorMessage }}
     </div>
+
 
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">

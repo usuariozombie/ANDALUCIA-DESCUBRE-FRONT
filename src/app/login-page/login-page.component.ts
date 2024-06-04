@@ -12,6 +12,7 @@ export class LoginPageComponent {
   loginForm: FormGroup;
   recaptchaResponse: string | undefined;
   loginError: boolean = false;
+  loginErrorMessage: string = '';
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
@@ -22,6 +23,10 @@ export class LoginPageComponent {
   }
 
   onSubmit() {
+    if (!this.loginForm.value.email || !this.loginForm.value.password) {
+      this.loginErrorMessage = 'Por favor, complete todos los campos';
+      return;
+    }
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe({
         next: (response: any) => {
@@ -35,7 +40,7 @@ export class LoginPageComponent {
         }
       });
     } else {
-      console.log('Formulario inválido');
+      this.loginErrorMessage = 'Por favor, completa todos los campos correctamente';
     }
   }
 
