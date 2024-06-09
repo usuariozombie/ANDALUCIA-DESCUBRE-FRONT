@@ -68,12 +68,14 @@ export class RegisterPageComponent {
                 townProvince: this.registerForm.value.townProvince
             };
 
+            console.log('Creando pueblo', townData);
+
             this.townService.createTown(townData).then(
                 (townResponse: any) => {
                     console.log('Pueblo creado exitosamente', townResponse);
                     const userData = {
                         ...this.registerForm.value,
-                        townID: townResponse.townId // Asume que el ID del pueblo es retornado como `id`
+                        townID: townResponse.townId
                     };
 
                     this.authService.register(userData).subscribe(
@@ -81,11 +83,20 @@ export class RegisterPageComponent {
                             console.log('Registro exitoso', response);
                             this.showConfirmation = true;
                             setTimeout(() => {
-                                this.router.navigate(['/']); // Ajusta la ruta según la configuración de tu enrutador
-                            }, 5000); // Redirige a la página de inicio después de 5 segundos
+                                this.router.navigate(['/']);
+                            }, 5000);
                         },
                         (error: any) => {
                             console.log('Error en el registro', error);
+                            // Eliminar el pueblo si el registro del usuario falla
+                            this.townService.deleteTown(townResponse.townId).then(
+                                () => {
+                                    console.log('Pueblo eliminado debido a error en el registro del usuario');
+                                },
+                                (deleteError: any) => {
+                                    console.log('Error al eliminar el pueblo', deleteError);
+                                }
+                            );
                         }
                     );
                 },

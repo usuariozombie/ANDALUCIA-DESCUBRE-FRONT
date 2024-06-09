@@ -33,12 +33,13 @@ export class DiscoverComponent implements OnInit {
   filterTowns() {
     this.filteredTowns = this.towns.filter(town => {
       const matchesSearch = this.searchTerm ?
-        (town.townName.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          town.townDescription.toLowerCase().includes(this.searchTerm.toLowerCase())) : true;
+        ((town.townName ? town.townName.toLowerCase().includes(this.searchTerm.toLowerCase()) : false) ||
+          (town.townDescription ? town.townDescription.toLowerCase().includes(this.searchTerm.toLowerCase()) : false)) : true;
 
       const matchesProvince = this.selectedProvince ? town.townProvince === this.selectedProvince : true;
 
       return town.townVisibility == 1 && matchesSearch && matchesProvince;
     });
   }
+
 }
