@@ -22,7 +22,7 @@ export class LoginPageComponent {
     });
   }
 
-  //Tengo una respuesta 403 porque no está validado el usuario, necesito que para este caso haya un error en loginErrorMessage también
+
   onSubmit() {
     if (!this.loginForm.value.email || !this.loginForm.value.password) {
       this.loginErrorMessage = 'Por favor, complete todos los campos';
@@ -33,11 +33,15 @@ export class LoginPageComponent {
         next: (response: any) => {
           console.log('Inicio de sesión exitoso', response);
           this.authService.saveToken(response.access_token);
-          this.router.navigate(['/admin/dashboard']); // Ajusta la ruta según la configuración de tu enrutador
+          this.router.navigate(['/admin/dashboard']);
         },
         error: (error: any) => {
-          if (error.status === 403) {
+          if (error.status === 400) {
+            this.loginErrorMessage = 'Usuario no encontrado o contraseña incorrecta';
+          } else if (error.status === 403) {
             this.loginErrorMessage = 'El usuario no está validado';
+          } else {
+            this.loginErrorMessage = 'Error en el inicio de sesión. Inténtalo de nuevo';
           }
           this.loginError = true;
         }
