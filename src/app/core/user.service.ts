@@ -9,7 +9,19 @@ export class UserService {
     constructor(private authService: AuthService) { }
 
     async getUsers(): Promise<any[]> {
-        return fetch('https://andaluciadescubre.usuariozombie.com/auth/users').then(response => response.json());
+        const token = this.authService.getToken(); // Obtén el token de acceso
+        return fetch('https://andaluciadescubre.usuariozombie.com/auth/users', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token // Incluye el token en el encabezado de la solicitud
+            }
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch users');
+            }
+            return response.json();
+        });
     }
 
     public getUser(): any {
