@@ -1,4 +1,4 @@
-# Andalucía Descubre Frontend
+# Andalucía Descubre Frontend - EDUARDO PIMENTEL 2º DAM
 
 Este proyecto es la implementación del frontend de la aplicación Andalucía Descubre, una plataforma diseñada para promover los lugares más emblemáticos de Andalucía. El proyecto está construido con Angular y cuenta con varias funcionalidades y componentes que permiten a los usuarios explorar y gestionar información sobre localidades, eventos, platos y monumentos.
 
