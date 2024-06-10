@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/enviroment/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LogService {
-  private logsUrl = 'https://andaluciadescubre.usuariozombie.com/auth/logs';
+  private logsUrl = environment.baseUrl + '/auth/logs';
 
   constructor(private http: HttpClient) { }
 

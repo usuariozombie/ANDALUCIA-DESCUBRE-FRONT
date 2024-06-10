@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/enviroment/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-  private baseUrl = 'https://andaluciadescubre.usuariozombie.com/api/towns';
+  private baseUrl = environment.baseUrl + '/api/towns';
 
   constructor(private http: HttpClient) { }
 

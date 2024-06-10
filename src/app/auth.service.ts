@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Router, NavigationEnd } from '@angular/router';
+import { environment } from 'src/enviroment/enviroment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    private baseUrl = 'https://andaluciadescubre.usuariozombie.com';
+    private baseUrl = environment.baseUrl;
     private logoutTimer$ = new Subject<void>();
 
     constructor(private http: HttpClient, private router: Router) {
